@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q3O-X8-ORD">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Releases-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Lab2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="pn6-rJ-zep">
+                                <rect key="frame" x="47" y="258" width="320" height="380"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Tn-ta-2e6">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="5Eb-Uo-zzI"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="Zbi-ey-Lna"/>
+                                        </connections>
+                                    </pickerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4o-qa-Pwt">
+                                        <rect key="frame" x="0.0" y="258" width="320" height="122"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="122" id="m3K-bx-7Mf"/>
+                                            <constraint firstAttribute="width" constant="320" id="rGK-bM-yZg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Game Releases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="090-gn-P3H">
+                                <rect key="frame" x="20" y="44" width="258" height="108"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="108" id="lKv-Fr-zfj"/>
+                                    <constraint firstAttribute="width" constant="258" id="lRS-rc-r7e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="090-gn-P3H" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4Os-lG-Nb9"/>
+                            <constraint firstItem="090-gn-P3H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="70k-P5-Pr7"/>
+                            <constraint firstItem="pn6-rJ-zep" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ODK-Pm-cPy"/>
+                            <constraint firstItem="pn6-rJ-zep" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hHs-T9-Yen"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Releases" image="calendar.badge.clock" catalog="system" id="YBG-B8-bI3"/>
+                    <connections>
+                        <outlet property="releaseDateLabel" destination="v4o-qa-Pwt" id="Nl7-4M-CgQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.98550724637687" y="83.705357142857139"/>
+        </scene>
+        <!--OpenAppViewController-->
+        <scene sceneID="HzW-vk-fCs">
+            <objects>
+                <viewController title="OpenAppViewController" id="BVk-SA-ZQH" customClass="OpenAppViewController" customModule="Lab2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Q9-hA-zzA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TWC Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7C-48-EuT">
+                                <rect key="frame" x="20" y="44" width="258" height="108"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="108" id="2hZ-iz-bIK"/>
+                                    <constraint firstAttribute="width" constant="258" id="z4B-Ja-WBX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="jPN-PK-mNc">
+                                <rect key="frame" x="27" y="315" width="360" height="266"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am VERY excited for the next Destiny 2 expansion: The Witch Queen. Tap to go to your calendar! " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Mi-gg-5ZK">
+                                        <rect key="frame" x="0.0" y="0.0" width="360" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="360" id="XI3-XB-Urp"/>
+                                            <constraint firstAttribute="height" constant="200" id="YhK-Ym-S4L"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPz-9U-8UA">
+                                        <rect key="frame" x="120.5" y="235" width="119" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Go to calendar"/>
+                                        <connections>
+                                            <action selector="buttonClicked:" destination="BVk-SA-ZQH" eventType="touchUpInside" id="4nW-Iz-pce"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3Fd-fE-xWH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="s7C-48-EuT" firstAttribute="top" secondItem="3Fd-fE-xWH" secondAttribute="top" id="4HG-v5-RDV"/>
+                            <constraint firstItem="jPN-PK-mNc" firstAttribute="centerY" secondItem="1Q9-hA-zzA" secondAttribute="centerY" id="Axb-N9-Mc1"/>
+                            <constraint firstItem="s7C-48-EuT" firstAttribute="leading" secondItem="3Fd-fE-xWH" secondAttribute="leading" constant="20" id="OG9-bv-oXF"/>
+                            <constraint firstItem="jPN-PK-mNc" firstAttribute="centerX" secondItem="1Q9-hA-zzA" secondAttribute="centerX" id="bqQ-EN-sjj"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Information" image="info.circle.fill" catalog="system" id="gZO-sy-o1q"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="78d-kK-J9i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="825"/>
+        </scene>
+        <!--ProximityViewController-->
+        <scene sceneID="ZPx-LN-oOi">
+            <objects>
+                <viewController title="ProximityViewController" id="rOi-jb-KHM" customClass="ProximityViewController" customModule="Lab2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FqS-5b-n6I">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="GvO-QH-eP2">
+                                <rect key="frame" x="40.5" y="315.5" width="333" height="265"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a release date to see how far away it is!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ce-dk-bfa">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="16F-TQ-h0W">
+                                        <rect key="frame" x="6" y="24" width="320" height="216"/>
+                                        <date key="minimumDate" timeIntervalSinceReferenceDate="665319600">
+                                            <!--2022-01-31 11:00:00 +0000-->
+                                        </date>
+                                        <connections>
+                                            <action selector="datePickerAction:" destination="rOi-jb-KHM" eventType="valueChanged" id="ciW-jJ-ZRV"/>
+                                        </connections>
+                                    </datePicker>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsb-0A-tno">
+                                        <rect key="frame" x="146" y="244.5" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Proximity to Release" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNH-Qy-FVw">
+                                <rect key="frame" x="20" y="44" width="258" height="108"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="108" id="8xg-z1-564"/>
+                                    <constraint firstAttribute="width" constant="258" id="KvX-fH-lTV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xxu-QS-jo1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tNH-Qy-FVw" firstAttribute="top" secondItem="xxu-QS-jo1" secondAttribute="top" id="CJQ-IU-Q4L"/>
+                            <constraint firstItem="GvO-QH-eP2" firstAttribute="centerY" secondItem="FqS-5b-n6I" secondAttribute="centerY" id="L1H-oq-WQU"/>
+                            <constraint firstItem="tNH-Qy-FVw" firstAttribute="leading" secondItem="xxu-QS-jo1" secondAttribute="leading" constant="20" id="Mvn-rL-8Y6"/>
+                            <constraint firstItem="GvO-QH-eP2" firstAttribute="centerX" secondItem="FqS-5b-n6I" secondAttribute="centerX" id="viI-Cl-Zof"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Proximity" image="clock.fill" catalog="system" id="k4C-5b-gn4"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="fsb-0A-tno" id="aGJ-4L-aKh"/>
+                        <outlet property="datePicker" destination="16F-TQ-h0W" id="cty-Lb-ZPS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhW-vW-JSA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1811.594202898551" y="83.705357142857139"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="mbf-Ce-QF6">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Q3O-X8-ORD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hbC-I8-KRa">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="yan-OE-zPD"/>
+                        <segue destination="rOi-jb-KHM" kind="relationship" relationship="viewControllers" id="Jjm-0n-dF7"/>
+                        <segue destination="BVk-SA-ZQH" kind="relationship" relationship="viewControllers" id="tff-7R-eC8"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gsx-DD-9FW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="83.705357142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="calendar.badge.clock" catalog="system" width="128" height="108"/>
+        <image name="clock.fill" catalog="system" width="128" height="121"/>
+        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
