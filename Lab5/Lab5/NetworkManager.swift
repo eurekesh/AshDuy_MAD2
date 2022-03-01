@@ -1,19 +1,23 @@
 //
 //  NetworkManager.swift
-//  Ada
+//  Lab5
 //
-//  Created by Ashlyn Duy on 2/16/22.
+//  Created by Ashlyn Duy on 2/27/22.
 //
 
 import Foundation
 
+struct Response : Decodable {
+    let message: URL?
+    let status: String?
+}
+
 class NetworkManager {
-    var mods = [Mod]()
     func sendRequest(_ url: String) async -> Response {
         guard let urlPath = URL(string: url)
         else {
             print("Could not parse URL")
-            return Response(inventory: nil, metadata: nil)
+            return Response(message: nil, status: nil)
         }
         
         do {
@@ -21,7 +25,7 @@ class NetworkManager {
             guard (res as? HTTPURLResponse)?.statusCode == 200
             else {
                 print("Error retrieving data")
-                return Response(inventory: nil, metadata: nil)
+                return Response(message: nil, status: nil)
             }
             
             print("successful retrieval")
@@ -31,7 +35,7 @@ class NetworkManager {
         }
         catch {
             print(error.localizedDescription)
-            return Response(inventory: nil, metadata: nil)
+            return Response(message: nil, status: nil)
         }
     }
     
@@ -41,21 +45,15 @@ class NetworkManager {
             return responseDat
         } catch let err {
             print(err.localizedDescription)
-            return Response(inventory: nil, metadata: nil)
+            return Response(message: nil, status: nil)
         }
-
     }
     
-    func getMods() async -> [Mod] {
-        async let ada_mods = sendRequest("https://api.destinyinsights.com/ada-1")
-        async let banshee_mods = sendRequest("https://api.destinyinsights.com/banshee-44")
-        let responses = await [ada_mods, banshee_mods]
-    
-        for res in responses {
-            if let modsEntry = res.inventory?.mods {
-                mods.append(contentsOf: modsEntry)
-            }
-        }
-        return mods
+    func getDogImage() async -> URL {
+        let endpoint = "https://dog.ceo/api/breeds/image/random/"
+        async let res = sendRequest(endpoint)
+        return await res.message ?? URL(string: "https://images.dog.ceo/breeds/komondor/n02105505_4458.jpg")! // default dog picture
     }
 }
+
+

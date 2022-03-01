@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     func loadMods() -> Void {
         let nwManager = NetworkManager()
         Task {
+            loadingSpinner.startAnimating()
+            loadingSpinner.isHidden = false
             async let newMods = nwManager.getMods()
             mods = await newMods
             loadingSpinner.stopAnimating()
@@ -32,6 +34,10 @@ class ViewController: UIViewController {
     }
     
     func loadModInfo() -> Void {
+        if mods.isEmpty {
+            modLabel.text = "Destiny API is offline"
+            return
+        }
         var modTest = ""
         for mod in mods {
             let currModTitle = mod.name
