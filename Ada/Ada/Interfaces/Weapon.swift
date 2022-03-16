@@ -12,5 +12,5 @@ struct Weapon: Decodable {
     let name: String
     let type: String
     let perks: [String]
-    let wishList: Bool
+    let wishList: Bool?
 }

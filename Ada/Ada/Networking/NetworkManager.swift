@@ -40,7 +40,7 @@ class NetworkManager {
             let responseDat = try JSONDecoder().decode(Response.self, from: dat)
             return responseDat
         } catch let err {
-            print(err.localizedDescription)
+            print(err)
             return Response(inventory: nil, metadata: nil)
         }
 
@@ -50,7 +50,7 @@ class NetworkManager {
         async let ada_mods = sendRequest("https://api.destinyinsights.com/ada-1")
         async let banshee_mods = sendRequest("https://api.destinyinsights.com/banshee-44")
         let responses = await [ada_mods, banshee_mods]
-    
+        
         for res in responses {
             if let modsEntry = res.inventory?.mods {
                 mods.append(contentsOf: modsEntry)

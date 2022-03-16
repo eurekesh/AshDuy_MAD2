@@ -52,5 +52,85 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2075C3C-19BE-43B7-80AF-C5F00F2C546A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ada/Networking/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "getMods()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F2075C3C-19BE-43B7-80AF-C5F00F2C546A - 5891ba345c5bc1c2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for Ada.NetworkManager.getMods() async -&gt; Swift.Array&lt;Ada.Mod&gt;"
+                  moduleName = "Ada"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ash/Desktop/Boulder/ATLS/MAD2/AshDuy_MAD2/Ada/Ada/Networking/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1342">
+               </Location>
+               <Location
+                  uuid = "F2075C3C-19BE-43B7-80AF-C5F00F2C546A - c45833dff33a9fc7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Ada.NetworkManager.getMods() async -&gt; Swift.Array&lt;Ada.Mod&gt;"
+                  moduleName = "Ada"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ash/Desktop/Boulder/ATLS/MAD2/AshDuy_MAD2/Ada/Ada/Networking/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "79">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FDAFDC23-60FB-4E40-A0C0-AB9C9C3EAE15"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ada/Networking/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "parse(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E6F2FE18-28BE-4371-A90D-D2E5FC867C49"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ada/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "retrieveManifest()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -13,9 +13,10 @@ class ViewController: UIViewController {
     
     var mods = [Mod]()
     
+    var modManifest = [ModManifestInfo]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        overrideUserInterfaceStyle = .dark
         loadMods()
     }
     
@@ -29,6 +30,7 @@ class ViewController: UIViewController {
             loadingSpinner.stopAnimating()
             loadingSpinner.isHidden = true
             loadModInfo()
+            await retrieveManifest()
             modLabel.isHidden = false
         }
     }
@@ -47,8 +49,25 @@ class ViewController: UIViewController {
         }
         
         modLabel.text = modTest
+        
+        
     }
-
-
+    
+    func retrieveManifest() async {
+        let manifestManager = ManifestManager()
+        print("Calling retrieve manifest")
+        manifestManager.retrieveManifest(mods) { [self]
+            (data, status) in
+            
+            switch status {
+            case .success:
+                modManifest = data
+                print("Successfully retrieved mod manifest data")
+            case .failedDigestion:
+                print("Something went wrong with static manifest digestion")
+            case .overallFailure:
+                print("Manifest could not be downloaded")
+            }
+        }
+    }
 }
-
