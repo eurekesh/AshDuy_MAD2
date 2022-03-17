@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Mod: Decodable {
+struct Mod: Codable {
     let name: String
     let type: String
     let itemHash: Int

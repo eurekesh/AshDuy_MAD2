@@ -15,78 +15,118 @@ class ModInventoryCollectionViewController: UICollectionViewController {
     
     var modManifest = [ModManifestInfo]()
     
+    var dataRetrievalComplete = false
+    
+    var modImageDict: [String:UIImage] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadMods()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setGradientBackground()
+        super.viewDidAppear(true)
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showMod" {
+            let cell = sender as! ModCellCollectionViewCell
+            let path = collectionView?.indexPath(for: cell)
+            let modVC = segue.destination as! ModDetailViewController
+            modVC.image = cell.cellImage.image
+            modVC.mod_description = modManifest[path!.row].modDescription
+        }
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return dataRetrievalComplete == false ? 0 : 2
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return dataRetrievalComplete == false ? 0 : 4
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ModCellCollectionViewCell
+        
+        guard dataRetrievalComplete else {
+            return cell
+        }
+        
+        var index = indexPath.item
+        if indexPath.section == 1 {
+            index += 4
+        }
+        
+        guard let url = URL(string: modManifest[index].iconPath) else { return cell }
+        if let imgData = try? Data(contentsOf: url) {
+            let cellImg = UIImage(data: imgData)
+            cell.cellImage.image = cellImg
+            modImageDict[modManifest[index].iconPath] = cellImg
+        }
+
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var header = HeaderSupplementaryView()
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+            header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! HeaderSupplementaryView
+            header.headerLabel.text = indexPath.section == 0 ? "Ada-1" : "Banshee-44"
+        }
+        return header
     }
     
     func loadMods() -> Void {
         let nwManager = NetworkManager()
         Task {
-            loadingSpinner.startAnimating()
-            loadingSpinner.isHidden = false
+//            loadingSpinner.startAnimating()
+//            loadingSpinner.isHidden = false
             async let newMods = nwManager.getMods()
             mods = await newMods
-            loadingSpinner.stopAnimating()
-            loadingSpinner.isHidden = true
+//            loadingSpinner.stopAnimating()
+//            loadingSpinner.isHidden = true
             loadModInfo()
             await retrieveManifest()
-            modLabel.isHidden = false
+
+//            modLabel.isHidden = false
         }
     }
     
     func loadModInfo() -> Void {
-        if mods.isEmpty {
-            modLabel.text = "Destiny API is offline"
-            return
-        }
-        var modTest = ""
-        for mod in mods {
-            let currModTitle = mod.name
-            let currModType = mod.type
-            let currTest = "The \(currModTitle) mod of type \(currModType) is being sold for 10 mod components \n \n"
-            modTest.append(currTest)
-        }
-        
-        modLabel.text = modTest
+//        if mods.isEmpty {
+//            modLabel.text = "Destiny API is offline"
+//            return
+//        }
+//        var modTest = ""
+//        for mod in mods {
+//            let currModTitle = mod.name
+//            let currModType = mod.type
+//            let currTest = "The \(currModTitle) mod of type \(currModType) is being sold for 10 mod components \n \n"
+//            modTest.append(currTest)
+//        }
+//
+//        modLabel.text = modTest
         
         
     }
@@ -101,6 +141,8 @@ class ModInventoryCollectionViewController: UICollectionViewController {
             case .success:
                 modManifest = data
                 print("Successfully retrieved mod manifest data")
+                dataRetrievalComplete = true
+                collectionView.reloadData()
             case .failedDigestion:
                 print("Something went wrong with static manifest digestion")
             case .overallFailure:
@@ -108,6 +150,17 @@ class ModInventoryCollectionViewController: UICollectionViewController {
             }
         }
     }
+    
+    // based off of https://medium.com/codex/cagradientlayer-tutorial-how-to-create-a-gradient-with-swift-5-2817a393dad
+    func setGradientBackground() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.blue.cgColor, UIColor.cyan.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.locations = [0,1]
+        gradientLayer.frame = self.view.bounds
+        self.collectionView.backgroundView?.layer.insertSublayer(gradientLayer, at: 0)
+      }
 
     // MARK: UICollectionViewDelegate
 
