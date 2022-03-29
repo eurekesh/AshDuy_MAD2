@@ -21,6 +21,7 @@ class ModInventoryCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setGradientBackground()
         loadMods()
         
         // Uncomment the following line to preserve selection between presentations
@@ -32,10 +33,11 @@ class ModInventoryCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        setGradientBackground()
-        super.viewDidAppear(true)
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//
+//        super.viewDidAppear(true)
+//
+//    }
 
     
     // MARK: - Navigation
@@ -159,7 +161,7 @@ class ModInventoryCollectionViewController: UICollectionViewController {
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
         gradientLayer.locations = [0,1]
         gradientLayer.frame = self.view.bounds
-        self.collectionView.backgroundView?.layer.insertSublayer(gradientLayer, at: 0)
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
       }
 
     // MARK: UICollectionViewDelegate
