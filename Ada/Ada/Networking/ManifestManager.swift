@@ -178,7 +178,6 @@ class ManifestManager {
             } catch {
                 print("\(url) could not be properly retrieved from cache")
             }
-            
         }
         
         return nil
