@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 private let reuseIdentifier = "Cell"
 
@@ -80,11 +81,13 @@ class ModInventoryCollectionViewController: UICollectionViewController {
         }
         
         guard let url = URL(string: modManifest[index].iconPath) else { return cell }
-        if let imgData = try? Data(contentsOf: url) {
-            let cellImg = UIImage(data: imgData)
-            cell.cellImage.image = cellImg
-            modImageDict[modManifest[index].iconPath] = cellImg
-        }
+        cell.cellImage.kf.indicatorType = .activity
+        cell.cellImage.kf.setImage(with: url)
+//        if let imgData = try? Data(contentsOf: url) {
+//            let cellImg = UIImage(data: imgData)
+//            cell.cellImage.image = cellImg
+//            modImageDict[modManifest[index].iconPath] = cellImg
+//        }
 
         return cell
     }
