@@ -10,4 +10,5 @@ import UIKit
 class HeaderSupplementaryView: UICollectionReusableView {
     @IBOutlet weak var headerLabel: UILabel!
     
+    @IBOutlet weak var vendorImage: UIImageView!
 }

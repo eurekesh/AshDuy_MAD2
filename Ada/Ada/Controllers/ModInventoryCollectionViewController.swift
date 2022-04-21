@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import NVActivityIndicatorView
 
 private let reuseIdentifier = "Cell"
 
@@ -19,11 +20,33 @@ class ModInventoryCollectionViewController: UICollectionViewController {
     var dataRetrievalComplete = false
     
     var modImageDict: [String:UIImage] = [:]
+    var loadingIndicator = NVActivityIndicatorView(frame: CGRect())
+    
+    @IBOutlet weak var loadingIcon: NVActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setGradientBackground()
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        let frame = CGRect(x: collectionView.center.x-22.5, y: collectionView.center.y-22.5, width:45, height: 45)
+        loadingIndicator = NVActivityIndicatorView(frame: frame, type: .ballScaleRippleMultiple)
+        
+        self.view.addSubview(loadingIndicator)
+        loadingIndicator.startAnimating()
         loadMods()
+        
+        collectionView.collectionViewLayout = generateLayout()
+        
+        // thanks to https://stackoverflow.com/a/44323459 !
+        // background source is https://wallpapercave.com/w/wp5081461
+        let background: UIImageView = {
+            let imgv = UIImageView()
+            imgv.image = UIImage(named:"d2-background")
+            imgv.contentMode = .scaleAspectFill
+            return imgv
+        }()
+        
+        self.collectionView.backgroundView = background
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -81,13 +104,13 @@ class ModInventoryCollectionViewController: UICollectionViewController {
         }
         
         guard let url = URL(string: modManifest[index].iconPath) else { return cell }
+        
         cell.cellImage.kf.indicatorType = .activity
         cell.cellImage.kf.setImage(with: url)
-//        if let imgData = try? Data(contentsOf: url) {
-//            let cellImg = UIImage(data: imgData)
-//            cell.cellImage.image = cellImg
-//            modImageDict[modManifest[index].iconPath] = cellImg
-//        }
+        
+        cell.modDescription.text = modManifest[index].modDescription
+        cell.modTitle.text = mods[index].name
+        cell.modType.text = mods[index].type
 
         return cell
     }
@@ -98,6 +121,7 @@ class ModInventoryCollectionViewController: UICollectionViewController {
         if kind == UICollectionView.elementKindSectionHeader {
             header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! HeaderSupplementaryView
             header.headerLabel.text = indexPath.section == 0 ? "Ada-1" : "Banshee-44"
+            header.vendorImage.image = indexPath.section == 0 ? UIImage(named: "ada") : UIImage(named: "banshee")
         }
         return header
     }
@@ -111,29 +135,9 @@ class ModInventoryCollectionViewController: UICollectionViewController {
             mods = await newMods
 //            loadingSpinner.stopAnimating()
 //            loadingSpinner.isHidden = true
-            loadModInfo()
             await retrieveManifest()
-
 //            modLabel.isHidden = false
         }
-    }
-    
-    func loadModInfo() -> Void {
-//        if mods.isEmpty {
-//            modLabel.text = "Destiny API is offline"
-//            return
-//        }
-//        var modTest = ""
-//        for mod in mods {
-//            let currModTitle = mod.name
-//            let currModType = mod.type
-//            let currTest = "The \(currModTitle) mod of type \(currModType) is being sold for 10 mod components \n \n"
-//            modTest.append(currTest)
-//        }
-//
-//        modLabel.text = modTest
-        
-        
     }
     
     func retrieveManifest() async {
@@ -147,6 +151,7 @@ class ModInventoryCollectionViewController: UICollectionViewController {
                 modManifest = data
                 print("Successfully retrieved mod manifest data")
                 dataRetrievalComplete = true
+                loadingIndicator.stopAnimating()
                 collectionView.reloadData()
             case .failedDigestion:
                 print("Something went wrong with static manifest digestion")
@@ -155,17 +160,32 @@ class ModInventoryCollectionViewController: UICollectionViewController {
             }
         }
     }
+
     
-    // based off of https://medium.com/codex/cagradientlayer-tutorial-how-to-create-a-gradient-with-swift-5-2817a393dad
-    func setGradientBackground() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.blue.cgColor, UIColor.cyan.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.locations = [0,1]
-        gradientLayer.frame = self.view.bounds
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
-      }
+    func generateLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+       
+        let modItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        modItem.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
+ 
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: modItem, count: 1)
+
+        let section = NSCollectionLayoutSection(group: group)
+
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
+        sectionHeader.pinToVisibleBounds = true
+
+        section.boundarySupplementaryItems = [sectionHeader]
+
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
+    
+
 
     // MARK: UICollectionViewDelegate
 

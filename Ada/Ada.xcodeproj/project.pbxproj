@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5E0CBA53280E3C9000F4048F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5E0CBA52280E3C9000F4048F /* Kingfisher */; };
+		5E67A57828111F3000C23885 /* AGaramondPro-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E67A57428111F3000C23885 /* AGaramondPro-BoldItalic.otf */; };
+		5E67A57928111F3000C23885 /* AGaramondPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E67A57528111F3000C23885 /* AGaramondPro-Bold.otf */; };
+		5E67A57A28111F3000C23885 /* AGaramondPro-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E67A57628111F3000C23885 /* AGaramondPro-Italic.otf */; };
+		5E67A57B28111F3000C23885 /* AGaramondPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E67A57728111F3000C23885 /* AGaramondPro-Regular.otf */; };
+		5E67A57E28113F0000C23885 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 5E67A57D28113F0000C23885 /* NVActivityIndicatorView */; };
 		5E6E80F927E15BB10080AFA6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5E6E80F827E15BB10080AFA6 /* Alamofire */; };
 		5E6E80FE27E169F00080AFA6 /* ManifestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E80FD27E169F00080AFA6 /* ManifestManager.swift */; };
 		5E6E810127E187CF0080AFA6 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5E6E810027E187CF0080AFA6 /* SwiftyJSON */; };
@@ -32,6 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E67A57428111F3000C23885 /* AGaramondPro-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AGaramondPro-BoldItalic.otf"; sourceTree = "<group>"; };
+		5E67A57528111F3000C23885 /* AGaramondPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AGaramondPro-Bold.otf"; sourceTree = "<group>"; };
+		5E67A57628111F3000C23885 /* AGaramondPro-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AGaramondPro-Italic.otf"; sourceTree = "<group>"; };
+		5E67A57728111F3000C23885 /* AGaramondPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AGaramondPro-Regular.otf"; sourceTree = "<group>"; };
 		5E6E80FD27E169F00080AFA6 /* ManifestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestManager.swift; sourceTree = "<group>"; };
 		5E6E810227E19F8C0080AFA6 /* ModManifestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModManifestInfo.swift; sourceTree = "<group>"; };
 		5E6E810427E26FB50080AFA6 /* ManifestStatusEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestStatusEnum.swift; sourceTree = "<group>"; };
@@ -60,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E67A57E28113F0000C23885 /* NVActivityIndicatorView in Frameworks */,
 				5E0CBA53280E3C9000F4048F /* Kingfisher in Frameworks */,
 				5E6E810127E187CF0080AFA6 /* SwiftyJSON in Frameworks */,
 				5E6E80F927E15BB10080AFA6 /* Alamofire in Frameworks */,
@@ -69,6 +79,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E67A57328111F1400C23885 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5E67A57528111F3000C23885 /* AGaramondPro-Bold.otf */,
+				5E67A57428111F3000C23885 /* AGaramondPro-BoldItalic.otf */,
+				5E67A57628111F3000C23885 /* AGaramondPro-Italic.otf */,
+				5E67A57728111F3000C23885 /* AGaramondPro-Regular.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		5E6E810827E2862A0080AFA6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +120,7 @@
 		5EF33F4127BE166D006CB4C0 /* Ada */ = {
 			isa = PBXGroup;
 			children = (
+				5E67A57328111F1400C23885 /* fonts */,
 				5EF33F5927BE1A75006CB4C0 /* Interfaces */,
 				5EF33F5627BE17C6006CB4C0 /* Networking */,
 				5EF33F4227BE166D006CB4C0 /* AppDelegate.swift */,
@@ -156,6 +178,7 @@
 				5E6E80F827E15BB10080AFA6 /* Alamofire */,
 				5E6E810027E187CF0080AFA6 /* SwiftyJSON */,
 				5E0CBA52280E3C9000F4048F /* Kingfisher */,
+				5E67A57D28113F0000C23885 /* NVActivityIndicatorView */,
 			);
 			productName = Ada;
 			productReference = 5EF33F3F27BE166D006CB4C0 /* Ada.app */;
@@ -189,6 +212,7 @@
 				5E6E80F727E15BB10080AFA6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				5E6E80FF27E187CE0080AFA6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				5E0CBA51280E3C9000F4048F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				5E67A57C28113F0000C23885 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = 5EF33F4027BE166D006CB4C0 /* Products */;
 			projectDirPath = "";
@@ -204,9 +228,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E67A57A28111F3000C23885 /* AGaramondPro-Italic.otf in Resources */,
 				5EF33F4F27BE166F006CB4C0 /* LaunchScreen.storyboard in Resources */,
+				5E67A57828111F3000C23885 /* AGaramondPro-BoldItalic.otf in Resources */,
 				5EF33F4C27BE166F006CB4C0 /* Assets.xcassets in Resources */,
 				5EF33F4A27BE166D006CB4C0 /* Main.storyboard in Resources */,
+				5E67A57928111F3000C23885 /* AGaramondPro-Bold.otf in Resources */,
+				5E67A57B28111F3000C23885 /* AGaramondPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +492,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		5E67A57C28113F0000C23885 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		5E6E80F727E15BB10080AFA6 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -487,6 +523,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5E0CBA51280E3C9000F4048F /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		5E67A57D28113F0000C23885 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E67A57C28113F0000C23885 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
 		};
 		5E6E80F827E15BB10080AFA6 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

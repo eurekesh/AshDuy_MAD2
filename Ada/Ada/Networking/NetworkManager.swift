@@ -74,8 +74,9 @@ class NetworkManager {
         let now = Date()
         let reset_time = Calendar.current.date(bySettingHour: 11, minute: 0, second: 0, of: Date())!
         let yesterday_reset = Calendar.current.date(byAdding: .day, value: -1, to: reset_time)!
+        let saved_reset_time = userDefaults.object(forKey: "lastRetrievalTime") as? Date ?? yesterday_reset
         
-        if now.timeIntervalSince(yesterday_reset) > 86400 {
+        if now.timeIntervalSince(yesterday_reset) > 86400 && now.timeIntervalSince(saved_reset_time) > 86400 {
             userDefaults.set(Date(), forKey: "lastRetrievalTime")
             print("new mod retrival needed")
             return nil

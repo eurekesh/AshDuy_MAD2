@@ -54,26 +54,44 @@ class ManifestManager {
         }
         
         if contentManifestFileExist {
-            if let search = digestPathManifest(readDownloadedData(contentManifestUrl)!) {
-                fetchModManifest(search, modHashes) {
-                    (digestedResults, status) in
-                    completion(digestedResults, .success)
+            DispatchQueue.global(qos: .userInitiated).async { [self] in
+                let search = digestPathManifest(readDownloadedData(contentManifestUrl)!)
+                
+                DispatchQueue.main.async { [self] in
+                    if search != nil {
+                        fetchModManifest(search!, modHashes) {
+                            (digestedResults, status) in
+                            completion(digestedResults, .success)
+                        }
+                    } else {
+                        completion([], .failedDigestion)
+                    }
                 }
-            } else {
-                completion([], .failedDigestion)
             }
+//            if let search = digestPathManifest(readDownloadedData(contentManifestUrl)!) {
+//                fetchModManifest(search, modHashes) {
+//                    (digestedResults, status) in
+//                    completion(digestedResults, .success)
+//                }
+//            } else {
+//                completion([], .failedDigestion)
+//            }
+            
         }
         
+        guard contentManifestFileExist == false else {
+            return
+        }
         
          AF.request(manifestUrl, headers: generateHeaders())
             .responseData
         { [self] response in
-            // debugPrint(response)
+             print("here2")
             
             switch response.result {
                 case .success:
                     if let manifestData = response.data {
-                        
+                        saveDownloadedData(manifestData, contentManifestUrl)
                         if let search = digestPathManifest(manifestData) {
                             fetchModManifest(search, modHashes) {
                                 (digestedResults, status) in
@@ -102,10 +120,18 @@ class ManifestManager {
         
         if modManifestFileExists {
             print("Cached mod manifest is being used")
-            if let file_data = readDownloadedData(modManifestUrl) {
-                completion(digestModManifest(file_data, hashes), .success)
-                return
+            
+            DispatchQueue.global(qos: .userInitiated).async { [self] in
+                let file_data = readDownloadedData(modManifestUrl)
+                
+                DispatchQueue.main.async { [self] in
+                    if file_data != nil {
+                        completion(digestModManifest(file_data!, hashes), .success)
+                        return
+                    }
+                }
             }
+            return
         }
         
         let urlString = "https://www.bungie.net/\(jsonContentPath)"
@@ -115,7 +141,7 @@ class ManifestManager {
             .responseData
         { [self]
             response in
-            // debugPrint(response)
+             print("here")
             switch response.result {
             case .success:
                 if let d2items = response.data {
