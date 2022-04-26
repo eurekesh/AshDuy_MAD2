@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "154628156024",
+    "project_id": "todoauth-56fe5",
+    "storage_bucket": "todoauth-56fe5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154628156024:android:1395aac7d4175a6bbcdb8d",
+        "android_client_info": {
+          "package_name": "com.ash.lab9"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "154628156024-vlo681aj7nqsdqm9k61s299ss0ic599s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvIsAfIVTAQpabg5bOfpKEN65tKICCbIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "154628156024-vlo681aj7nqsdqm9k61s299ss0ic599s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "154628156024-gekd9e9omnqpm80648h2imkfv5mb3kmr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ashapps.Lab6"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
